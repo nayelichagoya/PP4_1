@@ -6,7 +6,7 @@ public class GoodStudentDriver
     private String firstName;
     private String lastName;
     private int ID;
-    private boolean CSS;
+    private boolean CSS;//test comment
 
     // Constructors
     public GoodStudentDriver(double GPA, String firstName, String lastName, int ID, boolean CSS)
