@@ -1,32 +1,89 @@
+import java.text.DecimalFormat;
 public class GoodStudent
 {
-    public static void main (String[] args)
+    // Instance variables
+    private double GPA;
+    private String firstName;
+    private String lastName;
+    private int ID;
+    private boolean CSS;//test comment
+
+    // Constructors
+    public GoodStudent(double GPA, String firstName, String lastName, int ID, boolean CSS)
     {
-        GoodStudentDriver alanTuring = new GoodStudentDriver(3.56, "Alan", "Turing", 191254, true);
-        GoodStudentDriver florenceNightingale = new GoodStudentDriver(3.89, "Florence", "Nightingale", 182010,       false);
-        GoodStudentDriver graceHopper = new GoodStudentDriver(3.99, "Grace", "Hopper", 190692, true);
+        this.GPA = GPA;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ID = ID;
+        this.CSS = CSS;
+    } //end full constructor
 
-        // Call getters
-        System.out.println("CS status: " + graceHopper.getCSS());
-        System.out.println("First name: " + graceHopper.getfirstName());
 
-        // Call setters & getters
-        florenceNightingale.setID(95366);
-        florenceNightingale.setGPA(3.92);
-        System.out.println("Florence Nightingale's ID: " + florenceNightingale.getID());
-        System.out.println("Florence Nightingale's GPA: " + florenceNightingale.getGPA());
+    //Brain Methods
+    public String CreateID ()
+    {
+        String nums = String.valueOf(ID);
+        String firstInitial = firstName.substring(0, 1);
+        return firstInitial + lastName + nums.substring(nums.length()-3);
+    } // end create id
+    //Getters
 
-        // Call CreateID()
-        System.out.println("\nAlan Turing's ID" + alanTuring.CreateID());
-        System.out.println("Florence Nightingale's ID" + florenceNightingale.CreateID());
-        System.out.println("Grace Hopper's ID" + graceHopper.CreateID());
+    public String getfirstName()
+    {
+        return firstName;
+    } //end first name getter
 
-        // Call CSGPA()
-        System.out.println("\nAlan Turing's CS GPA: " + alanTuring.CSGPA());
-        System.out.println("Florence Nightingale's CS GPA: " + florenceNightingale.CSGPA());
-        System.out.println("Grace Hopper's CS GPA: " + graceHopper.CSGPA());
+    public String getlastName()
+    {
+        return lastName;
+    } //end last name getter
+    public double getGPA()
+    {
+        return GPA;
+    } // end gpa getter
+    public int getID()
+    {
+        return ID;
+    } // end ID getter
 
-        // Call toString
-        System.out.println(alanTuring.toString());
+    public boolean getCSS()
+    {
+        return CSS;
+    } // end CS student
+
+
+    //Setters
+    public void setID(int setID)
+    {
+        ID = setID;
+    }// end ID setter
+
+    public void setGPA(double setGPA)
+    {
+        GPA = setGPA;
+    }// end ID setter
+
+
+    public double CSGPA ()
+    {
+        DecimalFormat fmt = new DecimalFormat("0.##");
+        if(CSS == true)
+        {
+            return Double.parseDouble(fmt.format(GPA * 0.15 + GPA));
+        }
+        return GPA;
+    } // end create id
+
+
+    //  To String
+    public String toString()
+    {
+        String output = "First name: " + firstName +
+                "\nLast name: " + lastName +
+                "\nGPA: " + GPA +
+                "\nID: " + CreateID() +
+                "\nCS student: " + CSS;
+
+        return output;
     }
 }
